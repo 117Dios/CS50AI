@@ -4,6 +4,7 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
         {
             "name": "Python: Run degrees.py",
             "type": "debugpy",
@@ -18,6 +19,14 @@
             "request": "launch",
             "program": "${workspaceFolder}\\00_Search\\Projects\\tictactoe\\runner.py", 
             "cwd": "${workspaceFolder}\\00_Search\\Projects\\tictactoe",
+            "console": "integratedTerminal"            
+        },
+        {
+            "name": "Minesweeper.py",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}\\01_Knowledge\\Projects\\minesweeper\\runner.py", 
+            "cwd": "${workspaceFolder}\\01_Knowledge\\Projects\\minesweeper",
             "console": "integratedTerminal"            
         }
 

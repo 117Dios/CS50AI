@@ -1,3 +1,5 @@
+# ruff: noqa: F403, F405 (Warning suppression for wildstar imports)
+
 from logic import *
 
 AKnight = Symbol("A is a Knight")
@@ -12,21 +14,37 @@ CKnave = Symbol("C is a Knave")
 # Puzzle 0
 # A says "I am both a knight and a knave."
 knowledge0 = And(
-    # TODO
+    And(Or(AKnight,AKnave),Not(And(AKnight,AKnave))),
+    
+    Implication(AKnight,And(AKnave,AKnight)),
+    Implication(AKnave,Not(And(AKnight,AKnave)))
 )
 
 # Puzzle 1
 # A says "We are both knaves."
 # B says nothing.
 knowledge1 = And(
-    # TODO
+    And(Or(AKnight,AKnave),Not(And(AKnight,AKnave))),
+    And(Or(BKnight,BKnave),Not(And(BKnight,BKnave))),
+    
+    Implication(AKnight,And(BKnave,AKnave)),
+    Implication(AKnave,Not(And(BKnave,AKnave))),
+    
+    Or(BKnight,BKnave)
 )
 
 # Puzzle 2
 # A says "We are the same kind."
 # B says "We are of different kinds."
 knowledge2 = And(
-    # TODO
+    And(Or(AKnight,AKnave),Not(And(AKnight,AKnave))),
+    And(Or(BKnight,BKnave),Not(And(BKnight,BKnave))),
+    
+    Implication(AKnight,Or(Biconditional(AKnight,BKnight), Biconditional(AKnave,BKnave))),
+    Implication(AKnave,Not(Or(Biconditional(AKnight,BKnight), Biconditional(AKnave,BKnave)))),
+    
+    Implication(BKnight,Or(Biconditional(AKnight,BKnave), Biconditional(AKnave,BKnight))),
+    Implication(BKnave,Not(Or(Biconditional(AKnight,BKnave), Biconditional(AKnave,BKnight))))
 )
 
 # Puzzle 3
@@ -35,7 +53,19 @@ knowledge2 = And(
 # B says "C is a knave."
 # C says "A is a knight."
 knowledge3 = And(
-    # TODO
+    And(Or(AKnight,AKnave),Not(And(AKnight,AKnave))),
+    And(Or(BKnight,BKnave),Not(And(BKnight,BKnave))),
+    And(Or(CKnight,CKnave),Not(And(CKnight,CKnave))),
+    
+    Implication(Or(AKnight,AKnave),Or(AKnight,AKnave)),
+    
+    Implication(BKnight,Implication(AKnight,AKnave)),
+    Implication(BKnave,Not(Implication(AKnight,AKnave))),
+    Implication(BKnight,CKnave),
+    Implication(BKnave,Not(CKnave)),
+    
+    Implication(CKnight,Implication(AKnight,AKnight)),
+    Implication(CKnave,Not(Implication(AKnight,AKnight)))
 )
 
 
