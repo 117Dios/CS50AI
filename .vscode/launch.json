@@ -28,7 +28,24 @@
             "program": "${workspaceFolder}\\01_Knowledge\\Projects\\minesweeper\\runner.py", 
             "cwd": "${workspaceFolder}\\01_Knowledge\\Projects\\minesweeper",
             "console": "integratedTerminal"            
-        }
-
+        },
+        {
+            "name": "Pagerank.py",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}\\02_Uncertainty\\Projects\\pagerank\\pagerank.py", 
+            "cwd": "${workspaceFolder}\\02_Uncertainty\\Projects\\pagerank",
+            "console": "integratedTerminal",
+            "args": ["corpus0"]           
+        },
+        {
+            "name": "Heredity.py",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}\\02_Uncertainty\\Projects\\heredity\\heredity.py", 
+            "cwd": "${workspaceFolder}\\02_Uncertainty\\Projects\\heredity",
+            "console": "integratedTerminal",
+            "args": ["data/family0.csv"]           
+        }    
     ]
 }
