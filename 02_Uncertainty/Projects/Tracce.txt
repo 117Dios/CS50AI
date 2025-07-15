@@ -1,0 +1,5 @@
+Quiz: https://cs50.harvard.edu/ai/quizzes/2/
+
+Esercizio 1: https://cs50.harvard.edu/ai/projects/2/pagerank/
+
+Esercizio 2: https://cs50.harvard.edu/ai/projects/2/heredity/
