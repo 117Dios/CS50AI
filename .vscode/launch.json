@@ -5,6 +5,7 @@
     "version": "0.2.0",
     "configurations": [
 
+
         {
             "name": "Python: Run degrees.py",
             "type": "debugpy",
@@ -46,6 +47,15 @@
             "cwd": "${workspaceFolder}\\02_Uncertainty\\Projects\\heredity",
             "console": "integratedTerminal",
             "args": ["data/family0.csv"]           
+        },
+        {
+            "name": "Crosswords.py",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}\\03_Optimization\\Projects\\crossword\\generate.py", 
+            "cwd": "${workspaceFolder}\\03_Optimization\\Projects\\crossword",
+            "console": "integratedTerminal",
+            "args": ["data/structure1.txt", "data/words1.txt"]           
         }    
     ]
 }
