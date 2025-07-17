@@ -1,0 +1,3 @@
+Quiz: https://cs50.harvard.edu/ai/quizzes/5/
+
+Esercizio 1: https://cs50.harvard.edu/ai/projects/5/traffic/

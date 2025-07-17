@@ -1,0 +1,5 @@
+Quiz: https://cs50.harvard.edu/ai/quizzes/4/
+
+Esercizio 1: https://cs50.harvard.edu/ai/projects/4/shopping/
+
+Esercizio 2: https://cs50.harvard.edu/ai/projects/4/nim/
