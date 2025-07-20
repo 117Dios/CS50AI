@@ -6,8 +6,11 @@
     "configurations": [
 
 
+
+
+
         {
-            "name": "Python: Run degrees.py",
+            "name": "Degrees",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}\\00_Search\\Projects\\degrees\\degrees.py",
@@ -15,7 +18,7 @@
             "console": "integratedTerminal"            
         },
         {
-            "name": "Tictactoe.py",
+            "name": "Tictactoe",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}\\00_Search\\Projects\\tictactoe\\runner.py", 
@@ -23,7 +26,7 @@
             "console": "integratedTerminal"            
         },
         {
-            "name": "Minesweeper.py",
+            "name": "Minesweeper",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}\\01_Knowledge\\Projects\\minesweeper\\runner.py", 
@@ -31,7 +34,7 @@
             "console": "integratedTerminal"            
         },
         {
-            "name": "Pagerank.py",
+            "name": "Pagerank",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}\\02_Uncertainty\\Projects\\pagerank\\pagerank.py", 
@@ -40,7 +43,7 @@
             "args": ["corpus0"]           
         },
         {
-            "name": "Heredity.py",
+            "name": "Heredity",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}\\02_Uncertainty\\Projects\\heredity\\heredity.py", 
@@ -49,13 +52,30 @@
             "args": ["data/family0.csv"]           
         },
         {
-            "name": "Crosswords.py",
+            "name": "Crosswords",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}\\03_Optimization\\Projects\\crossword\\generate.py", 
             "cwd": "${workspaceFolder}\\03_Optimization\\Projects\\crossword",
             "console": "integratedTerminal",
             "args": ["data/structure1.txt", "data/words1.txt"]           
-        }    
+        },
+        {
+            "name": "Shopping",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}\\04_Learning\\Projects\\shopping\\shopping.py", 
+            "cwd": "${workspaceFolder}\\04_Learning\\Projects\\shopping",
+            "console": "integratedTerminal",
+            "args": ["shopping.csv"]           
+        },
+        {
+            "name": "Nim",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}\\04_Learning\\Projects\\nim\\play.py", 
+            "cwd": "${workspaceFolder}\\04_Learning\\Projects\\nim",
+            "console": "integratedTerminal"     
+        }
     ]
 }

@@ -28,6 +28,8 @@ with open("banknotes.csv") as f:
 evidence = [row["evidence"] for row in data]
 labels = [row["label"] for row in data]
 
+# train_test_split splitta automaticamente i dati in training e test
+# Effettua da riga 27 a 39 (senza 35) di banknotes0.py
 X_training, X_testing, y_training, y_testing = train_test_split(
     evidence, labels, test_size=0.4
 )
@@ -39,6 +41,9 @@ model.fit(X_training, y_training)
 predictions = model.predict(X_testing)
 
 # Compute how well we performed
+# train_test_split restituisce una lista di numpy array, che sopra abbiamo diviso in X e y training e testing
+# Qusando quest'espressione booleana sui numpy array, otteniamo una lista composta da booleani che rappresentano == o !=
+# Facendo .sum(), li sommiamo trattando True = 1 e False = 0, ottenendo così una sommatoria
 correct = (y_testing == predictions).sum()
 incorrect = (y_testing != predictions).sum()
 total = len(predictions)
