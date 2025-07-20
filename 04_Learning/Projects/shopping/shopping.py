@@ -1,5 +1,6 @@
 import csv
 import sys
+from datetime import datetime
 
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
@@ -59,7 +60,62 @@ def load_data(filename):
     labels should be the corresponding list of labels, where each label
     is 1 if Revenue is true, and 0 otherwise.
     """
-    raise NotImplementedError
+    evidence = []
+    labels = []
+    
+    months = {
+    "Jan": 0, "Feb": 1, "Mar": 2, "Apr": 3,
+    "May": 4, "Jun": 5, "Jul": 6, "Aug": 7,
+    "Sep": 8, "Oct": 9, "Nov": 10, "Dec": 11,
+    "June": 5, "Sept": 8  # add any variants your CSV has
+    }   
+    
+    try:
+        with open(filename, mode="r") as file:
+            fcsv = csv.DictReader(file)# To skip headers
+            
+            keys = fcsv.fieldnames
+
+            for row in fcsv:
+                row_list = []
+                
+                for key in keys:
+                    
+                    # If the key is one of these, transform the value in int
+                    if key in ["Administrative","Informational","ProductRelated", "OperatingSystems","Browser","Region", "TrafficType"]:
+                        row[key] = int(row[key])
+                    
+                    # If the key is in one of these, transform them into floats
+                    if key in ["Administrative_Duration","Informational_Duration","ProductRelated_Duration","BounceRates","ExitRates","PageValues","SpecialDay"]:
+                        row[key] = float(row[key])
+                        
+                    # If the key is the month, turn it into a number and subtract 1 to stay in interval {0, 11}
+                    elif key == "Month":
+                        row[key] = months[row[key]]
+                        
+                    # If it's Weekend, transform True in 1 and False in 0
+                    elif key in ["Weekend", "Revenue"]:
+                        if row[key] == "TRUE":
+                            row[key] = 1
+                        else:
+                            row[key] = 0
+                            
+                    # Transform Returning visitors in 1 and new visitors in 0
+                    elif key == "VisitorType":
+                        if row[key] == "Returning_Visitor":
+                            row[key] = 1
+                        else:
+                            row[key] = 0
+                    
+                    
+                    row_list.append(row[key])
+            
+                evidence.append(row_list[:-1])
+                labels.append(row_list[-1])
+    except FileNotFoundError:
+        sys.exit("File does not exist")
+    
+    return (evidence, labels)
 
 
 def train_model(evidence, labels):
@@ -67,7 +123,9 @@ def train_model(evidence, labels):
     Given a list of evidence lists and a list of labels, return a
     fitted k-nearest neighbor model (k=1) trained on the data.
     """
-    raise NotImplementedError
+    model = KNeighborsClassifier(n_neighbors=1)
+    model.fit(evidence,labels)
+    return model
 
 
 def evaluate(labels, predictions):
@@ -85,7 +143,22 @@ def evaluate(labels, predictions):
     representing the "true negative rate": the proportion of
     actual negative labels that were accurately identified.
     """
-    raise NotImplementedError
+    
+    true_positives = 0
+    true_negatives = 0
+    sample_size = len(labels)
+    
+    for i in range(sample_size):
+        if labels[i] == predictions[i]:
+            if labels[i] == 1:
+                true_positives += 1
+            else:
+                true_negatives += 1
+    
+    sensitivity = true_positives / labels.count(1)
+    specificity = true_negatives / labels.count(0)
+    
+    return (sensitivity, specificity)
 
 
 if __name__ == "__main__":
